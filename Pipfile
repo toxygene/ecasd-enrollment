@@ -9,6 +9,8 @@ pylint = "*"
 [packages]
 matplotlib = "*"
 numpy = "*"
+pandas = "*"
+statsmodels = "*"
 
 [requires]
 python_version = "3.6"
