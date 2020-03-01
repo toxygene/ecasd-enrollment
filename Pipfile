@@ -5,6 +5,9 @@ verify_ssl = true
 
 [dev-packages]
 pylint = "*"
+jupyter = "*"
+notebook = "*"
+ipykernel = "*"
 
 [packages]
 matplotlib = "*"
@@ -12,6 +15,7 @@ numpy = "*"
 pandas = "*"
 statsmodels = "*"
 seaborn = "*"
+pyexcel-ods3 = "*"
 
 [requires]
 python_version = "3.6"
