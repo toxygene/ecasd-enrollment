@@ -16,6 +16,7 @@ pandas = "*"
 statsmodels = "*"
 seaborn = "*"
 pyexcel-ods3 = "*"
+patsy = "*"
 
 [requires]
 python_version = "3.6"
