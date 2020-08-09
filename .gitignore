@@ -108,3 +108,4 @@ venv.bak/
 
 # Project artifacts
 artifacts/
+.idea
