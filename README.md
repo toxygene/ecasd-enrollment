@@ -32,7 +32,12 @@ The classroom utilization ratio is based on the number of classrooms in use / (t
 ## Enrollment Data Analysis.ipynb
 Jupyter Notebook exploration of capacity and classroom usage across the district.
 
-## per-school-cohort-size-distruction.py
+## linear-regression-of-school-population-to-classroom-count.py
+Creates a graph and prints linear regression summary for the number of students at a school and the number of classrooms being used.
+
+![Linear regression of school population and classrooms in use](./linear-regression-of-school-population-to-classroom-count.png) 
+
+## per-school-cohort-size-distribution.py
 Creates a graph showing the distribution of cohort sizes by school, per year.
 
 ## per-school-grade-size-distribution.py

@@ -16,11 +16,11 @@ def main():
     df = print_cohort_size_distribution(enrollment)
 
     with pd.option_context("display.max_rows", None, "display.max_columns", None, "display.width", None):
-        print(df.dropna())
+        print(df)
 
     sns.set(style="darkgrid")
 
-    g = sns.FacetGrid(df.reset_index().dropna(), col="School", col_wrap=3)
+    g = sns.FacetGrid(df.reset_index().dropna(), col="School", col_wrap=4)
     g.map(sns.scatterplot, "Graduation Year", "Students", "Grade")
 
     t = ticker.MultipleLocator(base=10)

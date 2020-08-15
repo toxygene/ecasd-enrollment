@@ -24,7 +24,7 @@ def get_predicted_yearly_share_per_grade_by_school(start_year, end_year):
 def get_students_per_grade_by_year_and_school(start_year, end_year):
     totals = _enrollment[["Year", "School", "Grade", "Students"]].groupby(["Year", "School", "Grade"]).sum().reset_index()
 
-    return totals[(totals["Year"] >= start_year) & (totals["Year"].astype("int") <= end_year)].set_index(["Year", "School", "Grade"])
+    return totals[(totals["Year"].astype("int") >= start_year) & (totals["Year"].astype("int") <= end_year)].set_index(["Year", "School", "Grade"])
 
 
 def get_students_per_grade_by_year(start_year, end_year):

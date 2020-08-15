@@ -6,7 +6,7 @@ from data.kindergarten import get_predicted_kindergarteners_per_school
 
 
 def main():
-    start_year = 2012
+    start_year = 1990
     end_year = 2020
 
     prediction = get_predicted_kindergarteners_per_school(start_year, end_year)
@@ -19,7 +19,7 @@ def main():
 
     sns.set_style("darkgrid")
 
-    g = sns.FacetGrid(df, col="School", col_wrap=4)
+    g = sns.FacetGrid(df.dropna(), col="School", col_wrap=4)
     g.map(sns.lineplot, "Year", "Students", "Measurement")
 
     g.add_legend()

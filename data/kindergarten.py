@@ -2,8 +2,7 @@ import pandas as _pd
 
 from data import births as _births
 from data import enrollment as _enrollment
-from data.enrollment_info import get_predicted_yearly_share_per_grade_by_school, get_students_per_grade_by_year, \
-    get_students_per_grade_by_year_and_school
+from data.enrollment_info import get_predicted_yearly_share_per_grade_by_school
 
 
 def get_births_five_years_ago_and_kindergartener_enrollments(start_year, end_year):
@@ -17,9 +16,10 @@ def get_births_five_years_ago_and_kindergartener_enrollments(start_year, end_yea
     :return:pd.DataFrame
     """
     years = _pd.CategoricalIndex(range(start_year, end_year+1), name="Year", ordered=True)
+    birth_years = _pd.CategoricalIndex(range(start_year-5, end_year+5), name="Year", ordered=True)
 
     kindergarteners = _enrollment[(_enrollment["Grade"] == "K") & (_enrollment["Year"].astype("int") >= start_year) & (_enrollment["Year"].astype("int") <= end_year)].groupby("Year").sum().rename({"Students": "Kindergarteners"}, axis=1).reindex(years)
-    births_five_years_ago = _births.shift(periods=5).rename({"Births": "Births Five Years Ago"}, axis=1)
+    births_five_years_ago = _births.reindex(birth_years).shift(periods=5).rename({"Births": "Births Five Years Ago"}, axis=1)
 
     df = births_five_years_ago.join(kindergarteners)
 
