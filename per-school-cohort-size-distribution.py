@@ -1,4 +1,6 @@
 #!/usr/bin/env python
+from os import environ
+from pathlib import Path
 
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -28,8 +30,10 @@ def main():
     for ax in g.axes:
         ax.yaxis.set_major_locator(t)
 
-    plt.savefig("./artifacts/per-school-cohort-size-distribution.png")
-    plt.show()
+    plt.savefig("./artifacts/" + Path(__file__).stem + ".png")
+
+    if environ.get("SHOW"):
+        plt.show()
 
 
 if __name__ == "__main__":

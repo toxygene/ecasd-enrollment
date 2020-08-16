@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+from os import environ
 from pathlib import Path
 from data import enrollment
 import matplotlib.pyplot as plt
@@ -32,13 +34,13 @@ def get_classrooms_in_use_by_school_and_year(start_year, end_year):
     return df.set_index(["Year", "School"])[["Classrooms"]]
 
 
-if __name__ == "__main__":
+def main():
     used_capacity = get_used_capacity_by_school_and_year(2000, 2019)
     classrooms_in_use = get_classrooms_in_use_by_school_and_year(2000, 2019)
 
     df = classrooms_in_use.join(used_capacity).reset_index()
 
-    fig, axes = plt.subplots(nrows=3, ncols=4, sharex=True, sharey=True)
+    fig, axes = plt.subplots(nrows=3, ncols=4, sharex=True, sharey=True, figsize=(16, 12), dpi=200)
 
     i = 0
     for school_name, sdf in df.groupby(["School"]):
@@ -66,5 +68,11 @@ if __name__ == "__main__":
 
         i += 1
 
-    plt.savefig(Path(__file__).stem + ".png")
-    plt.show()
+    plt.savefig("./artifacts/" + Path(__file__).stem + ".png")
+
+    if environ.get("SHOW"):
+        plt.show()
+
+
+if __name__ == "__main__":
+    main()

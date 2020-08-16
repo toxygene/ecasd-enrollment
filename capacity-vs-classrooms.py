@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+from os import environ
+from pathlib import Path
 import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
@@ -75,7 +78,7 @@ def main():
     lower_limit = min(df["85% Seat Utilization"].min(), df["Classroom Utilization"].min()) - .1
     upper_limit = max(df["85% Seat Utilization"].max(), df["Classroom Utilization"].max()) + .1
 
-    fig, axes = plt.subplots(3, 4, sharex="col", sharey="row")
+    fig, axes = plt.subplots(3, 4, sharex="col", sharey="row", figsize=(16, 12), dpi=200)
 
     i = 0
     for school_name, sdf in df.groupby("School"):
@@ -91,7 +94,11 @@ def main():
     fig.legend(["85% Seat Utilization", "Classroom Utilization %"])
 
     sns.set(style="darkgrid")
-    plt.show()
+
+    plt.savefig("./artifacts/" + Path(__file__).stem + ".png")
+
+    if environ.get("SHOW"):
+        plt.show()
 
 
 if __name__ == "__main__":

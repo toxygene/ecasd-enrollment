@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+from pathlib import Path
 import matplotlib.pyplot as plt
 import pandas as pd
 import statsmodels.formula.api as smf
@@ -16,10 +18,17 @@ def main():
     new_x = pd.DataFrame({"Rolling": [df["Rolling"].min(), df["Rolling"].max()]})
     predictions = lm.predict(new_x)
 
-    df.plot(kind="scatter", x="Rolling", y="Kindergarteners")
+    fig, ax = plt.subplots(figsize=(16, 12), dpi=200)
+
+    df.plot(kind="scatter", x="Rolling", y="Kindergarteners", ax=ax)
     plt.plot(new_x, predictions, c="red", linewidth=2)
 
-    plt.show()
+    ax.set_xlabel("Rolling 4 Year Mean of Births Five Years Ago")
+
+    plt.savefig("./artifacts/" + Path(__file__).stem + ".png")
+
+    if environ.get("SHOW"):
+        plt.show()
 
 
 if __name__ == "__main__":

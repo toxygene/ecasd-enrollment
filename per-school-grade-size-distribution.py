@@ -1,4 +1,6 @@
 #!/usr/bin/env python
+from os import environ
+from pathlib import Path
 
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -27,7 +29,10 @@ def main():
     for ax in g.axes:
         ax.yaxis.set_major_locator(t)
 
-    plt.show()
+    plt.savefig("./artifacts/" + Path(__file__).stem + ".png")
+
+    if environ.get("SHOW"):
+        plt.show()
 
 
 if __name__ == "__main__":

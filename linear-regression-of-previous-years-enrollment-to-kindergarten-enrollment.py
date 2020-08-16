@@ -1,5 +1,4 @@
-import matplotlib.pyplot as plt
-import pandas as pd
+#!/usr/bin/env python
 import statsmodels.formula.api as smf
 
 from data.enrollment_info import get_students_per_grade_by_year

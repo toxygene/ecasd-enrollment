@@ -26,16 +26,26 @@ Analysis of the data is contained in the following files.
 ### capacity-vs-classrooms.py
 Creates a graph that shows the 85% school capacity value vs the classroom utilization ratio.
 
+![85% capacity to classroom utilization](./artifacts/capacity-vs-classrooms.png)
+
 #### Note
 The classroom utilization ratio is based on the number of classrooms in use / (the stated number of sections at the school * 6).
 
 ### Enrollment Data Analysis.ipynb
 Jupyter Notebook exploration of capacity and classroom usage across the district.
 
-### linear-regression-of-school-population-to-classroom-count.py
-Creates a graph and prints [linear regression](https://en.wikipedia.org/wiki/Linear_regression) summary for each school of the number of students at a school and the number of classrooms being used.
+### linear-regression-of-births-to-kindergarten-enrollment.py
+Creates a graph and prints a [linear regression](https://en.wikipedia.org/wiki/Linear_regression) summary of the number of the district kindergarten enrollments and a four year rolling average of the births in the ECASD boundaries from five years ago.
 
-![linear regression of school population and classrooms in use](./linear-regression-of-school-population-to-classroom-count.png) 
+![linear regression of the district kindergarten enrollment and four year rolling average of births in ECASD boundaries five years ago](./artifacts/linear-regression-of-births-to-kindergarten-enrollment.png) 
+
+### linear-regression-of-previous-years-enrollment-to-kindergarten-enrollment.py
+Prints a [linear regression](https://en.wikipedia.org/wiki/Linear_regression) summary of the district enrollment and district enrollment the previous year.
+
+### linear-regression-of-school-population-to-classroom-count.py
+Creates a graph and prints a [linear regression](https://en.wikipedia.org/wiki/Linear_regression) summary for each school of the number of students at a school and the number of classrooms being used.
+
+![linear regression of school population and classrooms in use](./artifacts/linear-regression-of-school-population-to-classroom-count.png) 
 
 #### Note
 Roosevelt is the only school in the district that fails to reject the [null hypothesis](https://en.wikipedia.org/wiki/Null_hypothesis).
@@ -43,8 +53,12 @@ Roosevelt is the only school in the district that fails to reject the [null hypo
 ### per-school-cohort-size-distribution.py
 Creates a graph showing the distribution of cohort sizes by school, per year.
 
+![scatter plot of cohort distribution by school and year](./artifacts/per-school-cohort-size-distribution.png)
+
 ### per-school-grade-size-distribution.py
 Creates a graph showing the distribution of students at each school by grade for all the years in the enrollment data.
+
+![box plot of the distribution of class sizes by school and year])(./artifacts/per-school-grade-size-distribution.png)
 
 ### predicted-number-of-kindergarteners-graph.py
 Creates a graph showing the predicted and actual number of kindergarteners in the district, per year.
