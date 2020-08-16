@@ -58,7 +58,7 @@ Creates a graph showing the distribution of cohort sizes by school, per year.
 ### per-school-grade-size-distribution.py
 Creates a graph showing the distribution of students at each school by grade for all the years in the enrollment data.
 
-![box plot of the distribution of class sizes by school and year])(./artifacts/per-school-grade-size-distribution.png)
+![box plot of the distribution of class sizes by school and year](./artifacts/per-school-grade-size-distribution.png)
 
 ### predicted-number-of-kindergarteners-graph.py
 Creates a graph showing the predicted and actual number of kindergarteners in the district, per year.
