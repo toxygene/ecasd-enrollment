@@ -43,7 +43,7 @@ Creates a graph and prints a [linear regression](https://en.wikipedia.org/wiki/L
 Prints a [linear regression](https://en.wikipedia.org/wiki/Linear_regression) summary of the district enrollment and district enrollment the previous year.
 
 ### Linear Regression of School Population to Classroom Count
-Jupyter Notebook [analysis of the relationship between the number of students at a school and the number of classrooms in use at the school](./"Linear Regression of Yearly School Population and Classroom Usage.ipynb").
+Jupyter Notebook [analysis of the relationship between the number of students at a school and the number of classrooms in use at the school]("Linear Regression of Yearly School Population and Classroom Usage.ipynb").
 
 ### per-school-cohort-size-distribution.py
 Creates a graph showing the distribution of cohort sizes by school, per year.
