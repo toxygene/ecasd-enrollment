@@ -1,11 +1,15 @@
 #!/usr/bin/env python
-from os import getenv, mkdir, remove
+import glob
+from os import getenv, mkdir, remove, rmdir, unlink
 from os.path import dirname, realpath
+from pathlib import Path
+from jinja2 import Environment, select_autoescape, PackageLoader, Template
 from data import enrollment
 import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
 import statsmodels.formula.api as smf
+from datetime import datetime
 
 
 sections = {
@@ -35,49 +39,59 @@ def get_classrooms_in_use_by_school_and_year(start_year, end_year):
     return df.set_index(["Year", "School"])[["Classrooms"]]
 
 
-def main():
-    used_capacity = get_used_capacity_by_school_and_year(1995, 2019)
-    classrooms_in_use = get_classrooms_in_use_by_school_and_year(1995, 2019)
+def get_capacity_and_classrooms_in_use_by_school_and_year(start_year, end_year):
+    used_capacity = get_used_capacity_by_school_and_year(start_year, end_year)
+    classrooms_in_use = get_classrooms_in_use_by_school_and_year(start_year, end_year)
 
     df = classrooms_in_use.join(used_capacity).reset_index()
     df["School"] = df["School"].cat.set_categories(np.sort(df["School"].unique()))
 
-    artifact_directory = f"{dirname(realpath(__file__))}/artifacts"
+    return df
+
+
+def generate():
+    df = get_capacity_and_classrooms_in_use_by_school_and_year(1995, 2019)
+
+    package_name = Path(__file__).stem
+    working_directory = dirname(realpath(__file__))
+    artifact_directory = f"{working_directory}/artifacts"
 
     try:
-        remove(f"{artifact_directory}/*")
+        for f in glob.glob(f"{artifact_directory}/*"):
+            unlink(f)
+        rmdir(artifact_directory)
     except FileNotFoundError:
         pass
 
-    try:
-        mkdir(artifact_directory)
-    except FileExistsError:
-        pass
+    mkdir(artifact_directory)
 
-    # Generate linear regression model and save results
+    template_context = {
+        "summaries": {},
+        "generated_at": datetime.now()
+    }
+
+    # Generate linear regression model
     for school_name, sdf in df.groupby(["School"]):
         lm = smf.ols(formula="Classrooms ~ Students", data=sdf.dropna()).fit()
 
-        data = f"{school_name}\n{lm.summary()}"
+        template_context["summaries"][school_name] = lm.summary()
 
-        if getenv("SHOW"):
-            print(f"{data}\n\n")
-
-        if getenv("SAVE_ARTIFACTS"):
-            with open(f"{artifact_directory}/{school_name}.txt", "w") as f:
-                f.write(data)
-
-    # Generate linear regression model graph and save results
+    # Generate linear regression model graph
     g = sns.lmplot(x="Classrooms", y="Students", col="School", col_wrap=4, data=df, height=3)
     g.set(xlim=(11.5, 24.5))
     g.set(xticks=range(12, 25, 2))
 
-    if getenv("SHOW"):
-        plt.show()
+    plt.savefig(f"{artifact_directory}/graph.png", dpi=100)
 
-    if getenv("SAVE_ARTIFACTS"):
-        plt.savefig(f"{artifact_directory}/graph.png", dpi=100)
+    env = Environment(
+        loader=PackageLoader(package_name, "templates")
+    )
+
+    template = env.get_template("README.md.jinja")
+
+    with open(f"{working_directory}/README.md", "w") as f:
+        f.write(template.render(template_context))
 
 
 if __name__ == "__main__":
-    main()
+    generate()

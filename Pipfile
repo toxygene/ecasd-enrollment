@@ -17,6 +17,7 @@ statsmodels = "*"
 seaborn = "*"
 pyexcel-ods3 = "*"
 patsy = "*"
+jinja2 = "*"
 
 [requires]
 python_version = "3.8"

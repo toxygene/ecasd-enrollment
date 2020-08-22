@@ -1,0 +1,20 @@
+{{ '#' }} Linear Regression of Yearly School Population to Classroom Usage
+Is there a statistically relevant relationship between the number of students at a school and the number of classrooms
+in use that year? If so, can we quantify it's accuracy?
+
+By generating a dataframe of student population and classrooms in use for each school and year, I have generated an
+[ordinary least squares](https://en.wikipedia.org/wiki/Ordinary_least_squares)
+[linear regression](https://en.wikipedia.org/wiki/Linear_regression) model.
+
+![linear regression graph](./artifacts/graph.png)
+
+{{ '##' }} OLS Regression Summaries
+{% for school_name, summary in summaries.items() %}
+{{ '###' }} {{ school_name }}
+```text
+{{ summary|safe }}
+```
+
+{% endfor %}
+
+''Generated at {generated_at}''
