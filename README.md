@@ -47,7 +47,7 @@ Creates a graph and prints a [linear regression](https://en.wikipedia.org/wiki/L
 
 ![linear regression of school population and classrooms in use](./linear-regression-of-school-population-to-classroom-count/artifacts/graph.png) 
 
-[OLS regression summaries are available.](./linear-regression-of-school-population-to-classroom-count/artifacts)
+[Additional analysis is available.](./linear-regression-of-school-population-to-classroom-count/README.md)
 
 #### Note
 Northwoods and Roosevelt fails to reject the [null hypothesis](https://en.wikipedia.org/wiki/Null_hypothesis).
