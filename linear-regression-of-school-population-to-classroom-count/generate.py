@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 from os import getenv, mkdir, remove
 from os.path import dirname, realpath
-from pathlib import Path
 from data import enrollment
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -63,18 +62,20 @@ def main():
 
         if getenv("SHOW"):
             print(f"{data}\n\n")
-        else:
+
+        if getenv("SAVE_ARTIFACTS"):
             with open(f"{artifact_directory}/{school_name}.txt", "w") as f:
                 f.write(data)
 
     # Generate linear regression model graph and save results
     g = sns.lmplot(x="Classrooms", y="Students", col="School", col_wrap=4, data=df, height=3)
     g.set(xlim=(11.5, 24.5))
-    g.set(xticks=range(12, 25))
+    g.set(xticks=range(12, 25, 2))
 
     if getenv("SHOW"):
         plt.show()
-    else:
+
+    if getenv("SAVE_ARTIFACTS"):
         plt.savefig(f"{artifact_directory}/graph.png", dpi=100)
 
 
