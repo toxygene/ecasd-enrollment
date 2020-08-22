@@ -61,19 +61,21 @@ def main():
 
         data = f"{school_name}\n{lm.summary()}"
 
-        with open(f"{artifact_directory}/{school_name}.txt", "w") as f:
-            f.write(data)
-
-        if getenv("SHOW") == "True":
+        if getenv("SHOW"):
             print(f"{data}\n\n")
+        else:
+            with open(f"{artifact_directory}/{school_name}.txt", "w") as f:
+                f.write(data)
 
     # Generate linear regression model graph and save results
-    sns.lmplot(x="Classrooms", y="Students", col="School", col_wrap=4, data=df, height=3)
+    g = sns.lmplot(x="Classrooms", y="Students", col="School", col_wrap=4, data=df, height=3)
+    g.set(xlim=(11.5, 24.5))
+    g.set(xticks=range(12, 25))
 
-    plt.savefig(f"{artifact_directory}/graph.png", dpi=100)
-
-    if getenv("SHOW") == "True":
+    if getenv("SHOW"):
         plt.show()
+    else:
+        plt.savefig(f"{artifact_directory}/graph.png", dpi=100)
 
 
 if __name__ == "__main__":
