@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 from os import getenv, mkdir, remove
+from os.path import dirname, realpath
 from pathlib import Path
 from data import enrollment
 import matplotlib.pyplot as plt
@@ -42,7 +43,7 @@ def main():
     df = classrooms_in_use.join(used_capacity).reset_index()
     df["School"] = df["School"].cat.set_categories(np.sort(df["School"].unique()))
 
-    artifact_directory = f"./artifacts/{Path(__file__).stem}"
+    artifact_directory = f"{dirname(realpath(__file__))}/artifacts"
 
     try:
         remove(f"{artifact_directory}/*")
@@ -63,15 +64,15 @@ def main():
         with open(f"{artifact_directory}/{school_name}.txt", "w") as f:
             f.write(data)
 
-        if getenv("SHOW"):
+        if getenv("SHOW") == "True":
             print(f"{data}\n\n")
 
     # Generate linear regression model graph and save results
-    sns.lmplot(x="Classrooms", y="Students", col="School", col_wrap=4, data=df)
+    sns.lmplot(x="Classrooms", y="Students", col="School", col_wrap=4, data=df, height=3)
 
-    plt.savefig(f"{artifact_directory}/graph.png")
+    plt.savefig(f"{artifact_directory}/graph.png", dpi=100)
 
-    if getenv("SHOW"):
+    if getenv("SHOW") == "True":
         plt.show()
 
 

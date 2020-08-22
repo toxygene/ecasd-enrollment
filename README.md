@@ -45,9 +45,9 @@ Prints a [linear regression](https://en.wikipedia.org/wiki/Linear_regression) su
 ### linear-regression-of-school-population-to-classroom-count.py
 Creates a graph and prints a [linear regression](https://en.wikipedia.org/wiki/Linear_regression) summary for each school of the number of students at a school and the number of classrooms being used.
 
-![linear regression of school population and classrooms in use](./artifacts/linear-regression-of-school-population-to-classroom-count/graph.png) 
+![linear regression of school population and classrooms in use](./linear-regression-of-school-population-to-classroom-count/artifacts/graph.png) 
 
-[OLS regression summaries are available.](./artifacts/linear-regression-of-school-population-to-classroom-count)
+[OLS regression summaries are available.](./linear-regression-of-school-population-to-classroom-count/artifacts)
 
 #### Note
 Northwoods and Roosevelt fails to reject the [null hypothesis](https://en.wikipedia.org/wiki/Null_hypothesis).

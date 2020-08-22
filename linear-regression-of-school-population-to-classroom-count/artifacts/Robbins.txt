@@ -5,7 +5,7 @@ Dep. Variable:             Classrooms   R-squared:                       0.625
 Model:                            OLS   Adj. R-squared:                  0.607
 Method:                 Least Squares   F-statistic:                     33.38
 Date:                Sat, 22 Aug 2020   Prob (F-statistic):           1.18e-05
-Time:                        11:22:04   Log-Likelihood:                -31.718
+Time:                        11:42:51   Log-Likelihood:                -31.718
 No. Observations:                  22   AIC:                             67.44
 Df Residuals:                      20   BIC:                             69.62
 Df Model:                           1                                         
