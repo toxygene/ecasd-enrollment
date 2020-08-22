@@ -1,0 +1,28 @@
+Meadowview
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:             Classrooms   R-squared:                       0.474
+Model:                            OLS   Adj. R-squared:                  0.447
+Method:                 Least Squares   F-statistic:                     17.99
+Date:                Sat, 22 Aug 2020   Prob (F-statistic):           0.000400
+Time:                        11:22:04   Log-Likelihood:                -20.275
+No. Observations:                  22   AIC:                             44.55
+Df Residuals:                      20   BIC:                             46.73
+Df Model:                           1                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+Intercept      6.5272      2.815      2.318      0.031       0.654      12.400
+Students       0.0283      0.007      4.241      0.000       0.014       0.042
+==============================================================================
+Omnibus:                        0.250   Durbin-Watson:                   1.286
+Prob(Omnibus):                  0.882   Jarque-Bera (JB):                0.407
+Skew:                          -0.195   Prob(JB):                        0.816
+Kurtosis:                       2.460   Cond. No.                     8.74e+03
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The condition number is large, 8.74e+03. This might indicate that there are
+strong multicollinearity or other numerical problems.

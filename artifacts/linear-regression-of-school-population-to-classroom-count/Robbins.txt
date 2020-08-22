@@ -1,0 +1,28 @@
+Robbins
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:             Classrooms   R-squared:                       0.625
+Model:                            OLS   Adj. R-squared:                  0.607
+Method:                 Least Squares   F-statistic:                     33.38
+Date:                Sat, 22 Aug 2020   Prob (F-statistic):           1.18e-05
+Time:                        11:22:04   Log-Likelihood:                -31.718
+No. Observations:                  22   AIC:                             67.44
+Df Residuals:                      20   BIC:                             69.62
+Df Model:                           1                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+Intercept      6.2634      2.467      2.539      0.020       1.117      11.409
+Students       0.0312      0.005      5.777      0.000       0.020       0.043
+==============================================================================
+Omnibus:                        1.624   Durbin-Watson:                   1.131
+Prob(Omnibus):                  0.444   Jarque-Bera (JB):                1.313
+Skew:                           0.424   Prob(JB):                        0.519
+Kurtosis:                       2.156   Cond. No.                     4.92e+03
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The condition number is large, 4.92e+03. This might indicate that there are
+strong multicollinearity or other numerical problems.

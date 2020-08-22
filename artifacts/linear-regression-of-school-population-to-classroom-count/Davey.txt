@@ -1,0 +1,28 @@
+Davey
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:             Classrooms   R-squared:                       0.424
+Model:                            OLS   Adj. R-squared:                  0.395
+Method:                 Least Squares   F-statistic:                     14.72
+Date:                Sat, 22 Aug 2020   Prob (F-statistic):            0.00103
+Time:                        11:22:04   Log-Likelihood:                -32.741
+No. Observations:                  22   AIC:                             69.48
+Df Residuals:                      20   BIC:                             71.66
+Df Model:                           1                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+Intercept      6.4962      2.949      2.203      0.040       0.344      12.648
+Students       0.0301      0.008      3.836      0.001       0.014       0.046
+==============================================================================
+Omnibus:                        0.156   Durbin-Watson:                   1.208
+Prob(Omnibus):                  0.925   Jarque-Bera (JB):                0.143
+Skew:                           0.143   Prob(JB):                        0.931
+Kurtosis:                       2.726   Cond. No.                     4.62e+03
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The condition number is large, 4.62e+03. This might indicate that there are
+strong multicollinearity or other numerical problems.

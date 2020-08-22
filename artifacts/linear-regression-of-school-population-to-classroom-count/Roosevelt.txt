@@ -1,0 +1,28 @@
+Roosevelt
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:             Classrooms   R-squared:                       0.149
+Model:                            OLS   Adj. R-squared:                  0.106
+Method:                 Least Squares   F-statistic:                     3.498
+Date:                Sat, 22 Aug 2020   Prob (F-statistic):             0.0762
+Time:                        11:22:04   Log-Likelihood:                -27.988
+No. Observations:                  22   AIC:                             59.98
+Df Residuals:                      20   BIC:                             62.16
+Df Model:                           1                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+Intercept      8.2978      2.425      3.422      0.003       3.240      13.356
+Students       0.0171      0.009      1.870      0.076      -0.002       0.036
+==============================================================================
+Omnibus:                        2.270   Durbin-Watson:                   1.266
+Prob(Omnibus):                  0.321   Jarque-Bera (JB):                1.759
+Skew:                           0.539   Prob(JB):                        0.415
+Kurtosis:                       2.131   Cond. No.                     3.32e+03
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The condition number is large, 3.32e+03. This might indicate that there are
+strong multicollinearity or other numerical problems.

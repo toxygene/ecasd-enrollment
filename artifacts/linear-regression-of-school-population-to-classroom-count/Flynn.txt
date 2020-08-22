@@ -1,0 +1,28 @@
+Flynn
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:             Classrooms   R-squared:                       0.621
+Model:                            OLS   Adj. R-squared:                  0.598
+Method:                 Least Squares   F-statistic:                     26.26
+Date:                Sat, 22 Aug 2020   Prob (F-statistic):           0.000102
+Time:                        11:22:04   Log-Likelihood:                -16.937
+No. Observations:                  18   AIC:                             37.87
+Df Residuals:                      16   BIC:                             39.66
+Df Model:                           1                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+Intercept      4.8158      1.875      2.569      0.021       0.842       8.790
+Students       0.0347      0.007      5.125      0.000       0.020       0.049
+==============================================================================
+Omnibus:                        3.469   Durbin-Watson:                   1.635
+Prob(Omnibus):                  0.177   Jarque-Bera (JB):                1.269
+Skew:                           0.025   Prob(JB):                        0.530
+Kurtosis:                       1.700   Cond. No.                     3.35e+03
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The condition number is large, 3.35e+03. This might indicate that there are
+strong multicollinearity or other numerical problems.

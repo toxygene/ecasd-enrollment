@@ -45,10 +45,12 @@ Prints a [linear regression](https://en.wikipedia.org/wiki/Linear_regression) su
 ### linear-regression-of-school-population-to-classroom-count.py
 Creates a graph and prints a [linear regression](https://en.wikipedia.org/wiki/Linear_regression) summary for each school of the number of students at a school and the number of classrooms being used.
 
-![linear regression of school population and classrooms in use](./artifacts/linear-regression-of-school-population-to-classroom-count.png) 
+![linear regression of school population and classrooms in use](./artifacts/linear-regression-of-school-population-to-classroom-count/graph.png) 
+
+[OLS regression summaries are available.](./artifacts/linear-regression-of-school-population-to-classroom-count)
 
 #### Note
-Roosevelt is the only school in the district that fails to reject the [null hypothesis](https://en.wikipedia.org/wiki/Null_hypothesis).
+Northwoods and Roosevelt fails to reject the [null hypothesis](https://en.wikipedia.org/wiki/Null_hypothesis).
 
 ### per-school-cohort-size-distribution.py
 Creates a graph showing the distribution of cohort sizes by school, per year.
