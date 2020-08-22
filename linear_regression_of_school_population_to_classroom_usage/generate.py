@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 import glob
-from os import getenv, mkdir, remove, rmdir, unlink
+from os import mkdir, rmdir, unlink
 from os.path import dirname, realpath
 from pathlib import Path
-from jinja2 import Environment, select_autoescape, PackageLoader, Template
+from jinja2 import Environment, PackageLoader
 from data import enrollment
 import matplotlib.pyplot as plt
 import seaborn as sns
