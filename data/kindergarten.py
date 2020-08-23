@@ -60,5 +60,8 @@ def get_predicted_kindergarteners_per_school(start_year, end_year):
     return prediction
 
 
-if __name__ == "__main__":
-    print(get_predicted_kindergarteners_per_school(2012, 2020))
+def get_kindergarten_enrollment_by_year(start_year, end_year):
+    yearly_district_kindergarten_enrollment_dataframe = _enrollment.groupby(["Year", "Grade"]).sum().reset_index()
+    yearly_district_kindergarten_enrollment_dataframe = yearly_district_kindergarten_enrollment_dataframe[(yearly_district_kindergarten_enrollment_dataframe["Year"].astype("int") >= start_year) & (yearly_district_kindergarten_enrollment_dataframe["Year"].astype("int") <= end_year)]
+    yearly_district_kindergarten_enrollment_dataframe = yearly_district_kindergarten_enrollment_dataframe.set_index(["Year"])
+    return yearly_district_kindergarten_enrollment_dataframe[yearly_district_kindergarten_enrollment_dataframe["Grade"] == "K"]["Students"].rename("Kindergarteners")

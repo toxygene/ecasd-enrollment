@@ -2,6 +2,21 @@ import numpy as _np
 import pandas as _pd
 from data import enrollment as _enrollment
 
+current_schools = [
+    "Davey",
+    "Flynn",
+    "Lakeshore",
+    "Locust Lane",
+    "Longfellow",
+    "Manz",
+    "Meadowview",
+    "Northwoods",
+    "Putnam Heights",
+    "Robbins",
+    "Roosevelt",
+    "Sherman"
+]
+
 sections = {
     "Davey": 3,
     "Flynn": 2,
@@ -49,13 +64,13 @@ def get_students_per_grade_by_year(start_year, end_year):
 
 
 def get_used_capacity_by_school_and_year(start_year, end_year):
-    df = _enrollment[(_enrollment["Year"].astype("int") >= start_year) & (_enrollment["Year"].astype("int") <= end_year) & (_enrollment["School"].isin(sections.keys()))][["Year", "School", "Students"]].groupby(["Year", "School"]).sum().dropna().reset_index()
+    df = _enrollment[(_enrollment["Year"].astype("int") >= start_year) & (_enrollment["Year"].astype("int") <= end_year) & (_enrollment["School"].isin(current_schools))][["Year", "School", "Students"]].groupby(["Year", "School"]).sum().dropna().reset_index()
 
     return df.set_index(["Year", "School"])[["Students"]]
 
 
 def get_classrooms_in_use_by_school_and_year(start_year, end_year):
-    df = _enrollment[(_enrollment["Year"].astype("int") >= start_year) & (_enrollment["Year"].astype("int") <= end_year) & (_enrollment["School"].isin(sections.keys()))][["Year", "School", "Students"]].groupby(["Year", "School"]).count().dropna().reset_index().rename({"Students": "Classrooms"}, axis=1)
+    df = _enrollment[(_enrollment["Year"].astype("int") >= start_year) & (_enrollment["Year"].astype("int") <= end_year) & (_enrollment["School"].isin(current_schools))][["Year", "School", "Students"]].groupby(["Year", "School"]).count().dropna().reset_index().rename({"Students": "Classrooms"}, axis=1)
     return df.set_index(["Year", "School"])[["Classrooms"]]
 
 
