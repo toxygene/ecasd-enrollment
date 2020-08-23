@@ -1,6 +1,21 @@
+import numpy as _np
 import pandas as _pd
-
 from data import enrollment as _enrollment
+
+sections = {
+    "Davey": 3,
+    "Flynn": 2,
+    "Lakeshore": 3,
+    "Locust Lane": 3,
+    "Longfellow": 3,
+    "Manz": 3,
+    "Meadowview": 3,
+    "Northwoods": 3,
+    "Putnam Heights": 3,
+    "Robbins": 4,
+    "Roosevelt": 2,
+    "Sherman": 4
+}
 
 
 def get_yearly_share_per_grade_by_school(start_year, end_year):
@@ -31,3 +46,24 @@ def get_students_per_grade_by_year(start_year, end_year):
     totals = _enrollment[["Year", "Grade", "Students"]].groupby(["Year", "Grade"]).sum().reset_index()
 
     return totals[(totals["Year"] >= start_year) & (totals["Year"].astype("int") <= end_year)].set_index(["Year", "Grade"])
+
+
+def get_used_capacity_by_school_and_year(start_year, end_year):
+    df = _enrollment[(_enrollment["Year"].astype("int") >= start_year) & (_enrollment["Year"].astype("int") <= end_year) & (_enrollment["School"].isin(sections.keys()))][["Year", "School", "Students"]].groupby(["Year", "School"]).sum().dropna().reset_index()
+
+    return df.set_index(["Year", "School"])[["Students"]]
+
+
+def get_classrooms_in_use_by_school_and_year(start_year, end_year):
+    df = _enrollment[(_enrollment["Year"].astype("int") >= start_year) & (_enrollment["Year"].astype("int") <= end_year) & (_enrollment["School"].isin(sections.keys()))][["Year", "School", "Students"]].groupby(["Year", "School"]).count().dropna().reset_index().rename({"Students": "Classrooms"}, axis=1)
+    return df.set_index(["Year", "School"])[["Classrooms"]]
+
+
+def get_capacity_and_classrooms_in_use_by_school_and_year(start_year, end_year):
+    used_capacity = get_used_capacity_by_school_and_year(start_year, end_year)
+    classrooms_in_use = get_classrooms_in_use_by_school_and_year(start_year, end_year)
+
+    df = classrooms_in_use.join(used_capacity).reset_index()
+    df["School"] = df["School"].cat.set_categories(_np.sort(df["School"].unique()))
+
+    return df
