@@ -23,24 +23,11 @@ Spreadsheet containing the yearly ECASD elementary school enrollment data.
 ## Analysis
 Analysis of the data is contained in the following files.
 
-### capacity-vs-classrooms.py
-Creates a graph that shows the 85% school capacity value vs the classroom utilization ratio.
-
-![85% capacity to classroom utilization](./artifacts/capacity-vs-classrooms.png)
-
 #### Note
 The classroom utilization ratio is based on the number of classrooms in use / (the stated number of sections at the school * 6).
 
 ### Enrollment Data Analysis.ipynb
 Jupyter Notebook exploration of capacity and classroom usage across the district.
-
-### linear-regression-of-births-to-kindergarten-enrollment.py
-Creates a graph and prints a [linear regression](https://en.wikipedia.org/wiki/Linear_regression) summary of the number of the district kindergarten enrollments and a four year rolling average of the births in the ECASD boundaries from five years ago.
-
-![linear regression of the district kindergarten enrollment and four year rolling average of births in ECASD boundaries five years ago](./artifacts/linear-regression-of-births-to-kindergarten-enrollment.png) 
-
-### linear-regression-of-previous-years-enrollment-to-kindergarten-enrollment.py
-Prints a [linear regression](https://en.wikipedia.org/wiki/Linear_regression) summary of the district enrollment and district enrollment the previous year.
 
 ### Linear Regression of School Population to Classroom Count
 Jupyter Notebook [analysis of the relationship between the number of students at a school and the number of classrooms in use at the school](Linear%20Regression%20of%20Yearly%20School%20Population%20and%20Classroom%20Usage.ipynb).
