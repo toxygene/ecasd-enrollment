@@ -1,12 +1,10 @@
 #!/usr/bin/env python
-from os import environ
-from pathlib import Path
-
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 from data import enrollment
 from matplotlib import ticker
+from data.enrollment_info import current_schools
 
 
 def get_per_school_grade_size_distribution_dataframe(enrollment_dataframe):
@@ -16,7 +14,9 @@ def get_per_school_grade_size_distribution_dataframe(enrollment_dataframe):
 def main():
     sns.set(style="whitegrid")
 
-    df = get_per_school_grade_size_distribution_dataframe(enrollment)
+    df = get_per_school_grade_size_distribution_dataframe(enrollment).reset_index()
+    df = df[df["School"].isin(current_schools)].dropna()
+    df["School"].cat.remove_unused_categories(inplace=True)
 
     with pd.option_context("display.max_rows", None, "display.max_columns", None, "display.width", None):
         print(df)
@@ -29,10 +29,7 @@ def main():
     for ax in g.axes:
         ax.yaxis.set_major_locator(t)
 
-    plt.savefig("./artifacts/" + Path(__file__).stem + ".png")
-
-    if environ.get("SHOW"):
-        plt.show()
+    plt.show()
 
 
 if __name__ == "__main__":
