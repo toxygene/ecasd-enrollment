@@ -14,7 +14,7 @@ class TestKindergarten(unittest.TestCase):
         self.assertEqual(763, result.xs(2019)["Kindergarteners"])
         self.assertEqual(1080, result.xs(2019)["Births Five Years Ago"])
         self.assertTrue(pd.isna(result.xs(2020)["Kindergarteners"]))
-        self.assertTrue(pd.isna(result.xs(2020)["Births Five Years Ago"]))
+        self.assertEqual(1029, result.xs(2020)["Births Five Years Ago"])
 
     def test_get_ratio_of_births_to_kindergarten_enrollments(self):
         result = get_ratio_of_births_to_kindergarten_enrollments(2015, 2018)
