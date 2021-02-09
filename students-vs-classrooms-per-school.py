@@ -8,6 +8,8 @@ import seaborn as sns
 from data import enrollment
 from matplotlib.ticker import MaxNLocator
 
+from data.enrollment_info import current_schools
+
 
 def display_students_vs_classrooms_graph(df):
     students = df[["School", "Students", "Year"]].groupby(["School", "Year"]).sum()
@@ -37,13 +39,17 @@ def plot_students_and_classrooms(**kwargs):
 def main():
     df = display_students_vs_classrooms_graph(enrollment)
 
-    with pd.option_context("display.max_rows", None, "display.max_columns", None, "display.width", None):
-        print(df)
-
     classrooms_limits = (df["Classrooms"].min() - .5, df["Classrooms"].max() + .5)
     students_limits = (df["Students"].min() - 10, df["Students"].max() + 10)
 
-    g = sns.FacetGrid(df.reset_index(), col="School", col_wrap=3)
+    df = df.reset_index()
+    df = df[df["School"].isin(current_schools)]
+    df["School"].cat.remove_unused_categories(inplace=True)
+
+    with pd.option_context("display.max_rows", None, "display.max_columns", None, "display.width", None):
+        print(df)
+
+    g = sns.FacetGrid(df.reset_index(), col="School", col_wrap=4)
     g.map_dataframe(plot_students_and_classrooms, classroomsLimits=classrooms_limits, studentsLimits=students_limits)
 
     students = mpatches.Patch(color="b", label="Students")

@@ -3,15 +3,19 @@
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-from data.enrollment_info import get_predicted_yearly_share_per_grade_by_school, get_yearly_share_per_grade_by_school
+from data.enrollment_info import get_predicted_yearly_share_per_grade_by_school, get_yearly_share_per_grade_by_school, \
+    current_schools
 
 
 def main():
-    yearly_share_per_grade_by_school = get_yearly_share_per_grade_by_school(2012, 2020)
-    predicted_yearly_share_per_grade_by_school = get_predicted_yearly_share_per_grade_by_school(2012, 2020)
+    yearly_share_per_grade_by_school = get_yearly_share_per_grade_by_school(1998, 2020)
+    predicted_yearly_share_per_grade_by_school = get_predicted_yearly_share_per_grade_by_school(1998, 2020)
 
     df = yearly_share_per_grade_by_school.join(predicted_yearly_share_per_grade_by_school).reset_index().rename({"Share": "Actual", "Predicted Share": "Predicted"}, axis=1)
     df = df.melt(id_vars=["Year", "Grade", "School"], value_vars=["Actual", "Predicted"], var_name="Percent", value_name="Share")
+
+    df = df[df["School"].isin(current_schools)]
+    df["School"].cat.remove_unused_categories(inplace=True)
 
     sns.set_style("darkgrid")
     g = sns.FacetGrid(data=df, row="School", col="Grade")

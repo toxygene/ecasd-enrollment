@@ -14,7 +14,7 @@ records requests.
 Python file that contains methods for extracting useful dataframes from the enrollment data.
 
 ### kindergarten.py
-Python file that contains methods for extracting useful kindergaten-related dataframes from the birth and enrollment 
+Python file that contains methods for extracting useful kindergarten-related dataframes from the birth and enrollment 
 data.
 
 ### Third Friday.ods
