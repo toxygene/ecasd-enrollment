@@ -34,7 +34,7 @@ def _get_enrollment():
             ydf = _pd.melt(ydf, id_vars=["Date", "School"], var_name="Grade", value_name="Students")
             ydf = ydf[ydf["Students"].notnull()]
 
-            df = df.append(ydf)
+            df = _pd.concat([df, ydf])
 
     df["School"] = _pd.Categorical(df["School"], df["School"].unique())
     df["Students"] = df["Students"].astype("int")
