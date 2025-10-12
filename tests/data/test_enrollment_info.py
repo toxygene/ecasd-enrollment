@@ -1,4 +1,4 @@
-from data.enrollment_info import get_yearly_share_per_grade_by_school, get_predicted_yearly_share_per_grade_by_school, \
+from ecasd_enrollment.data.enrollment_info import get_yearly_share_per_grade_by_school, get_predicted_yearly_share_per_grade_by_school, \
     get_students_per_grade_by_year_and_school, get_students_per_grade_by_year
 from unittest import TestCase
 

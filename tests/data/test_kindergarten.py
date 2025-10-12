@@ -1,7 +1,7 @@
 import pandas as pd
 import unittest
 
-from data.kindergarten import get_births_five_years_ago_and_kindergartener_enrollments, get_ratio_of_births_to_kindergarten_enrollments, get_predicted_ratio_of_births_to_kindergarten_enrollments
+from ecasd_enrollment.data.kindergarten import get_births_five_years_ago_and_kindergartener_enrollments, get_ratio_of_births_to_kindergarten_enrollments, get_predicted_ratio_of_births_to_kindergarten_enrollments
 
 
 class TestKindergarten(unittest.TestCase):
