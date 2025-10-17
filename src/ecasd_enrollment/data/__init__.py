@@ -25,7 +25,6 @@ def _get_enrollment():
     """Create the enrollment dataframe"""
     df = _pd.DataFrame()
     with _path("ecasd_enrollment", "Third Friday.ods") as spreadsheet_path:
-        print(_get_data(str(spreadsheet_path)))
         for date, rows in _get_data(str(spreadsheet_path)).items():
             ydf = _pd.DataFrame(rows[1:], columns=rows[0])
             ydf["Date"] = _pd.to_datetime(date)
